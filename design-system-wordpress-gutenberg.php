@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
 define( 'CAGOV_DESIGN_SYSTEM_GUTENBERG', __DIR__ );
 define( 'CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION', '1.2.0.3' );
 define( 'CAGOV_DESIGN_SYSTEM_GUTENBERG_URI', esc_url(str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__)) );
-define( 'CAGOV_DESIGN_SYSTEM_GUTENBERG__DEBUG', true ); // Can associate with env variable later & default to false
+define( 'CAGOV_DESIGN_SYSTEM_GUTENBERG__DEBUG', true ); // Can associate with env variable later
 
 // define( 'CAGOV_DESIGN_SYSTEM_BUNDLE', "https://cdn.designsystem.webstandards.ca.gov/bundles/v1.0.0/cagov-design-system.min.js" ); // Bundle 
 // define( 'CAGOV_DESIGN_SYSTEM_BUNDLE', "https://cdn.designsystem.webstandards.ca.gov/bundles/v1.0.0/cagov-design-system.main.js" ); // Bundle 
@@ -97,9 +97,9 @@ function cagov_ds_gutenberg_enqueue_block_editor_assets(){
 
 	// Register compiled Gutenberg Block bundles.
     if (false === CAGOV_DESIGN_SYSTEM_GUTENBERG__DEBUG) {
-        wp_register_script( 'cagov-ds-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/js/gutenberg.js', 'js' ), $deps, CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION, true );
-        wp_register_style( 'cagov-ds-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/css/gutenberg.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
-        wp_register_style( 'cagov-ds-gutenberg-style', cagov_ds_gutenberg_get_min_file( '/build/css/cagov-design-system.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
+        wp_register_script( 'cagov-design-system-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/js/gutenberg.js', 'js' ), $deps, CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION, true );
+        wp_register_style( 'cagov-design-system-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/css/gutenberg.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
+        wp_register_style( 'cagov-design-system-gutenberg-style', cagov_ds_gutenberg_get_min_file( '/build/css/cagov-design-system.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
     
         // Register all CA Design System Gutenberg Blocks.
         foreach( glob(CAGOV_DESIGN_SYSTEM_GUTENBERG . '/blocks/*/') as $block ){
@@ -108,9 +108,9 @@ function cagov_ds_gutenberg_enqueue_block_editor_assets(){
         }
     } else {
         // Load `src` code from Gutenberg blocks editor. 
-        wp_register_script( 'cagov-ds-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/js/gutenberg.debug.js', 'js' ), $deps, CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION, true );
-        wp_register_style( 'cagov-ds-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/css/gutenberg.debug.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
-        wp_register_style( 'cagov-ds-gutenberg-style', cagov_ds_gutenberg_get_min_file( '/build/css/cagov-design-system.debug.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
+        wp_register_script( 'cagov-design-system-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/js/gutenberg.debug.js', 'js' ), $deps, CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION, true );
+        wp_register_style( 'cagov-design-system-gutenberg', cagov_ds_gutenberg_get_min_file( '/build/css/gutenberg.debug.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
+        wp_register_style( 'cagov-design-system-gutenberg-style', cagov_ds_gutenberg_get_min_file( '/build/css/cagov-design-system.debug.css' ), array(), CAGOV_DESIGN_SYSTEM_GUTENBERG__VERSION );
     
         // Register all CA Design System Gutenberg Blocks.
         foreach( glob(CAGOV_DESIGN_SYSTEM_GUTENBERG . '/blocks/*/') as $block ){
@@ -173,7 +173,7 @@ function cagov_ds_gutenberg_allowed_block_types($allowed_blocks)
         'core/custom-html',
         'core/classic',
         'cagov/ds-accordion',
-        // 'cagov/card', // Missing
+        // 'cagov/card', // Missing but necessary.
         'cagov/ds-link-grid',
         'cagov/ds-feature-card',
         'cagov/ds-page-alert',
