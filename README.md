@@ -40,8 +40,8 @@ This plugin includes only **Content components** from the CA Design System.
 
 ## Compatible WordPress themes
 - Compatible themes that implement the CA Design System
-    - [`CAWeb` theme](https://github.com/CA-CODE-Works/CAWeb) Version (x.x.x) @TBD
-    - [`cagov-wp-theme-generate-press`](https://github.com/cagov/design-system-wordpress-theme) (DEVELOPMENT)
+    - [CAWeb theme](https://github.com/CA-CODE-Works/CAWeb) Version (x.x.x) @TBD
+    - [Design System WordPress theme](https://github.com/cagov/design-system-wordpress-theme) (DEVELOPMENT)
 
 ## Using with CAWeb theme
 - We are aligning with the [CAWeb](https://github.com/CA-CODE-Works/CAWeb) State Template theme.
