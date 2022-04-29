@@ -11,7 +11,7 @@
 		"html": true
 	},
 	"textdomain": "cagov-design-system",
-	"editorScript": "cagov-ds-gutenberg",
-	"editorStyle": "cagov-ds-gutenberg",
-	"style": "cagov-ds-gutenberg-style"
+	"editorScript": "cagov-design-system-gutenberg",
+	"editorStyle": "cagov-design-system-gutenberg",
+	"style": "cagov-design-system-gutenberg-style"
 }
