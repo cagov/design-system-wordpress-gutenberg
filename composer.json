@@ -1,5 +1,5 @@
 {
-    "name": "cagov/ca-design-system-gutenberg-blocks",
+    "name": "cagov/cagov-design-system-gutenberg-blocks",
     "description": "Packages to help enforce WordPress Coding Standards",
     "require-dev": {
         "wp-coding-standards/wpcs": "^2.3",
@@ -11,7 +11,6 @@
         "post-install-cmd": [
             "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs,vendor/phpcompatibility/phpcompatibility-wp,vendor/phpcompatibility/php-compatibility "
         ]
-        
     },
     "require": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",

@@ -1,3 +1,2 @@
-# cagov-design-system-headless-wordpress
-
-*Re-writing readme in future sprint*
+Co-writing README in Notion with multiple teams of developers, will publish when it's good.
+[URL]()
