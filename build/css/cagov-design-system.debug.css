@@ -1,3 +1,200 @@
+/* initial styles */
+cagov-accordion details {
+  border-radius: var(--radius-2, 5px) !important;
+  margin-bottom: 0;
+  min-height: var(--s-5, 3rem);
+  margin-top: 0.5rem;
+  border: solid var(--border-1, 1px) var(--gray-200, #ededef) !important;
+}
+
+cagov-accordion details summary {
+  cursor: pointer;
+  padding: var(--s-1, 0.5rem) var(--s-5, 3rem) var(--s-1, 0.5rem) var(--s-2, 1rem);
+  background-color: var(--gray-200, #ededef);
+  position: relative;
+  line-height: var(--s-4, 2rem);
+  margin: 0;
+  color: var(--primary-color, #064e66);
+  font-size: var(--font-size-2, 1.125rem);
+  font-weight: bold;
+}
+
+cagov-accordion details .accordion-body {
+  padding: var(--s-2, 1rem);
+}
+
+/* styles applied after custom element javascript runs */
+cagov-accordion:defined {
+  /* let it be open initially if details has open attribute */
+}
+
+cagov-accordion:defined details {
+  transition: height var(--animation-duration-2, 0.2s);
+  height: var(--s-5, 3rem);
+  overflow: hidden;
+}
+
+cagov-accordion:defined details[open] {
+  height: auto;
+}
+
+cagov-accordion:defined summary::-webkit-details-marker {
+  display: none;
+}
+
+cagov-accordion:defined details summary {
+  list-style: none;
+  /* hide default expansion triangle after js executes */
+  border-radius: var(--border-5, 5px) var(--border-5, 5px) 0 0;
+}
+
+cagov-accordion:defined details summary:focus {
+  outline-offset: -2px;
+  outline: solid 2px var(--highlight-color, #fbad23) !important;
+}
+
+cagov-accordion:defined details .cagov-open-indicator {
+  background-color: var(--primary-color, #064e66);
+  height: 3px;
+  width: 15px;
+  border-radius: var(--border-3, 3px);
+  position: absolute;
+  right: var(--s-2, 1rem);
+  top: 1.4rem;
+}
+
+cagov-accordion:defined details .cagov-open-indicator:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 3px;
+  width: 3px;
+  height: 15px;
+  border-radius: var(--border-3, 3px);
+  border: none;
+  box-shadow: 3px 0 0 0 var(--primary-color, #064e66);
+  background: none;
+}
+
+cagov-accordion:defined details[open] .cagov-open-indicator:before {
+  display: none;
+}
+
+/* Page alert */
+.icon-select {
+  height: 48px;
+  padding: 0 0px 0 16px;
+}
+
+.editor-styles-wrapper .message-body {
+  padding: 0 32px;
+}
+
+.editor-styles-wrapper .cagov-page-alert {
+  min-height: 64px;
+  height: auto;
+}
+
+.cagov-page-alert {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  width: 100%;
+  min-height: 46px;
+  height: auto;
+  background: rgba(254, 192, 47, 0.2);
+  border: 1px solid var(--cagov-highlight, #fec02f);
+  box-sizing: border-box;
+  border-radius: 5px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 32px 0px;
+}
+
+.cagov-page-alert .icon {
+  line-height: 1.5rem;
+  background: none;
+}
+
+.cagov-page-alert .close-button {
+  background: none;
+  margin-left: auto;
+  border: none;
+  cursor: pointer !important;
+}
+
+.cagov-page-alert .body {
+  line-height: 1.5rem;
+  padding: 0 16px;
+  background: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .cagov-page-alert {
+    min-height: 46px;
+    height: auto;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+ol.cagov-regulatory-outline,
+ol.cagov-regulatory-outline ol {
+  counter-reset: section;
+  list-style-type: none;
+  margin-left: 32px;
+  padding-left: 32px;
+}
+
+ol.cagov-regulatory-outline li,
+ol.cagov-regulatory-outline ol li {
+  counter-increment: section;
+  list-style-type: none;
+  margin: 16px 0;
+  position: relative;
+}
+
+ol.cagov-regulatory-outline li::before,
+ol.cagov-regulatory-outline ol li::before {
+  content: "(" counter(section, lower-alpha) ") ";
+  width: 100px;
+  margin-left: -32px;
+  padding-right: 32px;
+  display: inline-block;
+  position: absolute;
+  left: -50px;
+  white-space: nowrap;
+  text-align: right;
+}
+
+ol.cagov-regulatory-outline ol li:before,
+ol.cagov-regulatory-outline ol ol li:before {
+  content: "(" counter(section, decimal) ") ";
+}
+
+ol.cagov-regulatory-outline ol li ol li:before,
+ol.cagov-regulatory-outline ol ol li ol li:before {
+  content: "(" counter(section, upper-alpha) ") ";
+}
+
+ol.cagov-regulatory-outline ol li ol li ol li:before,
+ol.cagov-regulatory-outline ol ol li ol li ol li:before {
+  content: "(" counter(section, lower-roman) ") ";
+}
+
 /* sidebar layout */
 .cagov-with-sidebar {
   overflow: hidden;
@@ -138,89 +335,6 @@
   white-space: nowrap;
 }
 
-/* initial styles */
-cagov-accordion details {
-  border-radius: var(--radius-2, 5px) !important;
-  margin-bottom: 0;
-  min-height: var(--s-5, 3rem);
-  margin-top: 0.5rem;
-  border: solid var(--border-1, 1px) var(--gray-200, #ededef) !important;
-}
-
-cagov-accordion details summary {
-  cursor: pointer;
-  padding: var(--s-1, 0.5rem) var(--s-5, 3rem) var(--s-1, 0.5rem) var(--s-2, 1rem);
-  background-color: var(--gray-200, #ededef);
-  position: relative;
-  line-height: var(--s-4, 2rem);
-  margin: 0;
-  color: var(--primary-color, #064e66);
-  font-size: var(--font-size-2, 1.125rem);
-  font-weight: bold;
-}
-
-cagov-accordion details .accordion-body {
-  padding: var(--s-2, 1rem);
-}
-
-/* styles applied after custom element javascript runs */
-cagov-accordion:defined {
-  /* let it be open initially if details has open attribute */
-}
-
-cagov-accordion:defined details {
-  transition: height var(--animation-duration-2, 0.2s);
-  height: var(--s-5, 3rem);
-  overflow: hidden;
-}
-
-cagov-accordion:defined details[open] {
-  height: auto;
-}
-
-cagov-accordion:defined summary::-webkit-details-marker {
-  display: none;
-}
-
-cagov-accordion:defined details summary {
-  list-style: none;
-  /* hide default expansion triangle after js executes */
-  border-radius: var(--border-5, 5px) var(--border-5, 5px) 0 0;
-}
-
-cagov-accordion:defined details summary:focus {
-  outline-offset: -2px;
-  outline: solid 2px var(--highlight-color, #fbad23) !important;
-}
-
-cagov-accordion:defined details .cagov-open-indicator {
-  background-color: var(--primary-color, #064e66);
-  height: 3px;
-  width: 15px;
-  border-radius: var(--border-3, 3px);
-  position: absolute;
-  right: var(--s-2, 1rem);
-  top: 1.4rem;
-}
-
-cagov-accordion:defined details .cagov-open-indicator:before {
-  display: block;
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 3px;
-  width: 3px;
-  height: 15px;
-  border-radius: var(--border-3, 3px);
-  border: none;
-  box-shadow: 3px 0 0 0 var(--primary-color, #064e66);
-  background: none;
-}
-
-cagov-accordion:defined details[open] .cagov-open-indicator:before {
-  display: none;
-}
-
 .no-deco {
   text-decoration: none;
 }
@@ -279,50 +393,6 @@ cagov-accordion:defined details[open] .cagov-open-indicator:before {
   .cagov-grid .block-editor-block-list__layout {
     grid-template-columns: repeat(auto-fit, minmax(calc(min(250px, 100%)), 1fr));
   }
-}
-
-ol.cagov-regulatory-outline,
-ol.cagov-regulatory-outline ol {
-  counter-reset: section;
-  list-style-type: none;
-  margin-left: 32px;
-  padding-left: 32px;
-}
-
-ol.cagov-regulatory-outline li,
-ol.cagov-regulatory-outline ol li {
-  counter-increment: section;
-  list-style-type: none;
-  margin: 16px 0;
-  position: relative;
-}
-
-ol.cagov-regulatory-outline li::before,
-ol.cagov-regulatory-outline ol li::before {
-  content: "(" counter(section, lower-alpha) ") ";
-  width: 100px;
-  margin-left: -32px;
-  padding-right: 32px;
-  display: inline-block;
-  position: absolute;
-  left: -50px;
-  white-space: nowrap;
-  text-align: right;
-}
-
-ol.cagov-regulatory-outline ol li:before,
-ol.cagov-regulatory-outline ol ol li:before {
-  content: "(" counter(section, decimal) ") ";
-}
-
-ol.cagov-regulatory-outline ol li ol li:before,
-ol.cagov-regulatory-outline ol ol li ol li:before {
-  content: "(" counter(section, upper-alpha) ") ";
-}
-
-ol.cagov-regulatory-outline ol li ol li ol li:before,
-ol.cagov-regulatory-outline ol ol li ol li ol li:before {
-  content: "(" counter(section, lower-roman) ") ";
 }
 
 /* step list */
@@ -391,74 +461,4 @@ ol.cagov-regulatory-outline ol ol li ol li ol li:before {
 
 .cagov-step-list li:last-child:before {
   margin-left: 6px;
-}
-
-/* Page alert */
-.icon-select {
-  height: 48px;
-  padding: 0 0px 0 16px;
-}
-
-.editor-styles-wrapper .message-body {
-  padding: 0 32px;
-}
-
-.editor-styles-wrapper .cagov-page-alert {
-  min-height: 64px;
-  height: auto;
-}
-
-.cagov-page-alert {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 8px 16px;
-  width: 100%;
-  min-height: 46px;
-  height: auto;
-  background: rgba(254, 192, 47, 0.2);
-  border: 1px solid var(--cagov-highlight, #fec02f);
-  box-sizing: border-box;
-  border-radius: 5px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  margin: 32px 0px;
-}
-
-.cagov-page-alert .icon {
-  line-height: 1.5rem;
-  background: none;
-}
-
-.cagov-page-alert .close-button {
-  background: none;
-  margin-left: auto;
-  border: none;
-  cursor: pointer !important;
-}
-
-.cagov-page-alert .body {
-  line-height: 1.5rem;
-  padding: 0 16px;
-  background: none;
-}
-
-@media only screen and (max-width: 600px) {
-  .cagov-page-alert {
-    min-height: 46px;
-    height: auto;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
