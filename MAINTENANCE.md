@@ -11,6 +11,12 @@
 * Other branches can be submitted for feature development following this pattern: `feature/{issue-number}-{short-description}`
 * Hotfixes may be applied to branches as needed.
 
+## Content updates
+Please notes that some updates will update the markup on a page.
+
+An editor can try the "resolve" feature on pages with issues.
+
+
 ## How to Get Started Building Gutenberg Blocks
 
 Make sure npm is installed along with necessary packages, from a terminal in the projects root directory run the following command.

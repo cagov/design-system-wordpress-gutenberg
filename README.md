@@ -5,22 +5,32 @@
 Version 2.0.0
 `@cagov/design-system-wordpress-gutenberg`
 
-Integrates the [State of California Design System](https://designsystem.webstandards.ca.gov) into the WordPress Gutenberg editor.
+Integrates the State of [California Design System](https://designsystem.webstandards.ca.gov) into the WordPress Gutenberg editor.
 
 The [CA.gov](http://CA.gov) design system defines “Content Components”. This can be structured markup with CSS and custom elements, or interactive web components.
 
 [Gutenberg](https://wordpress.org/gutenberg/) is the open-source editor that is included in core WordPress, version 5.0 and later. It allows content editors to use pre-defined markup blocks in content.
 
-This plugin includes only Content components from the Design System.
+This plugin includes only **Content components** from the CA Design System.
 
 ## How to use this plugin
 
 - Install and enable this plugin
-- This will make a block library available in the editor UI.
+- This will create a block library available in the Gutenberg Editor UI (requires Gutenberg editor to be installed and enabled.)
 - Review guidance for content editors
     - Please also check the [principles](https://designsystem.webstandards.ca.gov/principles/) and [content principles](https://designsystem.webstandards.ca.gov/style/content/) of the design system for more information on improving content for State of California website users.
 - Keep the plugin up-to-date for important security and design updates.
 - Check our CHANGELOG for notifications of major updates for database updates to keep content in sync with design system changes.
+
+## Using Gutenberg Blocks
+
+- Support: ODI has drafted content guidance for content editors, if needed please [reach out](https://designsystem.webstandards.ca.gov/contact-us/) to the Design System team until we are able to publish the full version for ca.gov WordPress systems.
+
+## Using with CAWeb theme
+
+- We are aligning with the CAWeb theme and its integration of the Design System . 
+- This is the same codebase that will be used in the CAWeb theme. 
+- You can use this plugin without the CAWeb theme.
 
 ## Maintenance
 
@@ -47,5 +57,3 @@ We are discussing a working-group and governance team to assist with guidance an
 ## Custom Gutenberg blocks
 
 If you would like to add additional Gutenberg blocks to your project, you can do this similarly to how we have implemented it for the Department of Cannabis Control website.
-
-[MAINTENANCE](https://www.notion.so/MAINTENANCE-532a4642838c48d0a26992b1560b6d88)
