@@ -16,11 +16,6 @@
 			"source": "text",
 			"selector": "h1"
 		},
-		"body": {
-			"type": "array",
-			"source": "html",
-			"selector": ".cagov-feature-card-body-content"
-		},
 		"mediaID": {
 			"type": "number"
 		},

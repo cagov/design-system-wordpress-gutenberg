@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -27,7 +27,6 @@ export default function save(props) {
 	const {
 		attributes: {  
 			title,
-			body, 
 			mediaURL,
 			mediaAlt,
 			mediaWidth,
@@ -39,11 +38,11 @@ export default function save(props) {
 		<div {...blockProps}>
 			<div class="cagov-with-sidebar cagov-with-sidebar-left cagov-featured-section cagov-bkgrd-gry cagov-block">
 				<div>
-					<div class="cagov-stack cagov-p-2 feature-card-sidebar">
+					<div class="cagov-stack cagov-p-2 cagov-featured-sidebar">
 						<h1>{title}</h1>
 	
 						<div class="cagov-feature-card-body-content">
-							{body}
+							<InnerBlocks.Content />
 						</div>
 					</div>
 					<div>

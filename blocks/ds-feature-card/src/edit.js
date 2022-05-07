@@ -57,11 +57,11 @@
 	
 	const onSelectImage = function (media) {
 		 return setAttributes({
-			 mediaURL: media.sizes.large.url,
+			 mediaURL: media.url,
 			 mediaID: media.id,
-			 mediaAlt: media.description,
-			 mediaWidth: media.sizes.large.width,
-			 mediaHeight: media.sizes.large.height,
+			 mediaAlt: media.alt,
+			 mediaWidth: media.width,
+			 mediaHeight: media.height,
 		 });
 	 };
  
@@ -69,7 +69,7 @@
 		 <div {...blockProps}>
 			<div class="cagov-with-sidebar cagov-with-sidebar-left cagov-featured-section cagov-bkgrd-gry cagov-block">
 				<div>
-					<div class="cagov-stack cagov-p-2 feature-card-sidebar">
+					<div class="cagov-stack cagov-p-2 cagov-featured-sidebar">
 						<RichText
 							tagName="h1"
 							placeholder={__('Write title…', 'cagov-design-system')}
