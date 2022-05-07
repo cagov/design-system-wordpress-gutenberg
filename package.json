@@ -31,9 +31,6 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "workspaces": [
-    "./blocks/*"
-  ],
   "devDependencies": {
     "del": "^6.0.0",
     "fancy-log": "^2.0.0",
