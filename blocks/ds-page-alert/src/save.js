@@ -22,13 +22,22 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save(props) {
+	const blockProps = useBlockProps.save();
+	const {
+		attributes: {  
+			icon,
+			message
+		 },
+	} = props;
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __(
-				'Ds Page Alert – hello from the saved content!',
-				'ds-page-alert'
-			) }
-		</p>
+		<div {...blockProps}>
+			<cagov-page-alert
+				data-icon={icon}
+				data-message={message}
+				class="cagov-page-alert"
+			></cagov-page-alert>
+		</div>
 	);
 }

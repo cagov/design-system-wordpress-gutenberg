@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +29,36 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit(props) {
+	let { 
+		setAttributes,
+		attributes: {
+		   icon,
+		   message
+	   }, 
+   } = props;
+
+   const blockProps = useBlockProps();
+
+   
+	 const onChangeMsg = ( newMsg ) => {
+		setAttributes( { message: newMsg } );
+	};
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Ds Page Alert – hello from the editor!', 'ds-page-alert' ) }
-		</p>
+		<div {...blockProps}>
+			<cagov-page-alert
+				data-icon={icon}
+				data-message={message}
+				class="cagov-page-alert"
+				>
+				<RichText
+					tagName="span"
+					placeholder={__('Write alert…', 'cagov-design-system')}
+					value={message}
+					onChange={onChangeMsg}
+				/>
+			</cagov-page-alert>
+		</div>
 	);
 }
