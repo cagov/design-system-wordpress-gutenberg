@@ -81,9 +81,14 @@ task('build-block', async function(){
 });
 
 /**
+ * Task to install all block npm packages
+ */
+task('install-block-packages', installGutenbergBlocks);
+
+/**
  * Runs Gutenberg Block build script 
  */
-async function buildGutenbergBlocks(){
+ async function buildGutenbergBlocks(){
     src(['./blocks/*/'])
         .pipe(tap (function(file){
 			try {
@@ -96,6 +101,21 @@ async function buildGutenbergBlocks(){
 
 }
 
+/**
+ * Installs Gutenberg Block npm packages 
+ */
+ async function installGutenbergBlocks(){
+    src(['./blocks/*/'])
+        .pipe(tap (function(file){
+			try {
+				shell.task("cd " + file.path + " && npm i")()
+			} catch (error) {
+				// Note - error messages will vary depending on browser
+				console.error(file.path + ' failed to compile');
+			}
+        }))
+
+}
 /**
  * Build Gutenberg Block Editor CSS file
  */
