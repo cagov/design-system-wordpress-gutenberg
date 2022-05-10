@@ -20,10 +20,12 @@ import { useBlockProps, RichText, BlockControls, URLPopover, __experimentalLinkC
  */
  import { Toolbar, ToolbarGroup, ToolbarButton  } from '@wordpress/components';
 
- /**
-  * @see https://wp-icon.wild-works.net/ for list of icons
-  */
- import { link } from '@wordpress/icons';
+/**
+ * @see https://wp-icon.wild-works.net/ for list of icons
+ */
+import { link } from '@wordpress/icons';
+
+import { useState } from '@wordpress/element';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -32,10 +34,6 @@ import { useBlockProps, RichText, BlockControls, URLPopover, __experimentalLinkC
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-
-
-import { useState } from '@wordpress/element';
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -53,14 +51,14 @@ export default function Edit(props) {
 		   	linkInfo
 	   }, 
    } = props;
+
+	const blockProps = useBlockProps();
+
+	const [ isVisible, setIsVisible ] = useState( false );
    
-   const blockProps = useBlockProps();
- 
-   const [ isVisible, setIsVisible ] = useState( false );
-   
-   const toggleVisible = () => {
-	   setIsVisible( ( state ) => ! state );
-   };
+	const toggleVisible = () => {
+		setIsVisible( ( state ) => ! state );
+	};
 
 	const onChangeText = ( newLinkText ) => {
 		setAttributes( { linkText: newLinkText } );
@@ -74,65 +72,50 @@ export default function Edit(props) {
 		setAttributes( { linkInfo: '' } );
 	};
 
+
 	return (
-			<div {...blockProps}>
-				<BlockControls>
-					<Toolbar>	
-						<ToolbarGroup>
-							<ToolbarButton 
-								icon={ link } 
-								label={ "Change url settings for this section." } 
-								onClick={ toggleVisible }
+		<li {...blockProps}>
+			<BlockControls>
+				<Toolbar>	
+					<ToolbarGroup>
+						<ToolbarButton 
+							icon={ link } 
+							onClick={ toggleVisible }
+						>
+						{
+							isVisible &&
+							<URLPopover>
+							<LinkControl
+								value={ linkInfo }
+								onChange={ onChangeLink }
+								onRemove={onRemoveLink}
+								settings={[
+									{
+										id: 'linkTarget',
+										title: 'Open in New Tab?',
+									}
+								]}
+								withCreateSuggestion={false}
+								allowDirectEntry={true}
+								withURLSuggestion={false}
 							>
-							{
-								isVisible &&
-								<URLPopover>
-								<LinkControl
-									value={ linkInfo }
-									onChange={ onChangeLink }
-									onRemove={onRemoveLink}
-									settings={[
-										{
-											id: 'linkTarget',
-											title: 'Open in New Tab?',
-										}
-									]}
-									withCreateSuggestion={false}
-									allowDirectEntry={true}
-									withURLSuggestion={false}
-								>
-								</LinkControl>
-								</URLPopover>
-							}
-							</ToolbarButton >
-						</ToolbarGroup>
-					</Toolbar>	
-				</BlockControls>
-				<a class="no-deco cagov-card">
-					<RichText 
-						tagName="span"
-						className="card-text"
-						value={linkText}
-						multiline="false"
-						allowedFormats={[]}
-						onChange={onChangeText}
-						placeholder={__("Link Text", 'cagov-design-system')}
-					/>
-					<svg
-					xmlns="http://www.w3.org/2000/svg"
-					enable-background="new 0 0 24 24"
-					height="24px"
-					viewBox="0 0 24 24"
-					width="24px"
-					>
-					<g>
-						<path d="M0,0h24v24H0V0z" fill="none" />
-					</g>
-					<g>
-						<polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12" />
-					</g>
-					</svg>
-				</a>
-			</div>
+							</LinkControl>
+							</URLPopover>
+						}
+						</ToolbarButton >
+					</ToolbarGroup>
+				</Toolbar>	
+			</BlockControls>
+			<a>
+				<RichText 
+					tagName="span"
+					multiline="false"
+					value={linkText}
+					allowedFormats={[]}
+					onChange={onChangeText}
+					placeholder={__("Navigation Link", 'cagov-design-system')}
+				/>
+			</a>
+		</li>
 	);
 }
