@@ -25,23 +25,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( 'cagov/ds-accordion', {
-	attributes: {
-	  title: {
-		type: 'string'
-	  },
-	  body: {
-		type: 'array',
-		source: 'children',
-		selector: '.accordion-body'
-	  }
-	},
-	example: {
-	  attributes: {
-		title: __('Title 1', 'cagov-design-system'),
-		body: __('A couple buttons are included inside this accordion to demonstrate that when the accordion is closed they are automatically not in the keyboard focus order but when the accordion opens they become the next available elements in the keyboard navigation sequence after the accordion\'s summary element.', 'cagov-design-system')
-	  }
-	},
+registerBlockType( 'cagov-design-system/ds-accordion', {
 	/**
 	 * @see ./edit.js
 	 */

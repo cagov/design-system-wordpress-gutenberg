@@ -12,13 +12,14 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start",
-		"postbuild": "npm i @cagov/ds-accordion"
+		"prebuild": "npm i cross-env",
+		"postbuild": "cross-env-shell npm i @cagov/$npm_package_name"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^22.5.0"
 	},
 	"dependencies": {
-		"@cagov/ds-accordion": "^2.0.1"
+		"@cagov/ds-accordion": "^2.0.1",
+		"cross-env": "^7.0.3"
 	}
 }

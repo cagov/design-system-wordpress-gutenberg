@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +29,16 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
-	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Ds Link Grid – hello from the editor!', 'ds-link-grid' ) }
-		</p>
+export default function Edit(props) {
+   const blockProps = useBlockProps();
+
+   const ALLOWED_BLOCKS = ['cagov-design-system/ds-link-grid-card'];
+   
+   return (
+		<div {...blockProps}>
+			<div class="cagov-grid">
+				<InnerBlocks  allowedBlocks={ALLOWED_BLOCKS}/>
+			</div>
+		</div>
 	);
 }

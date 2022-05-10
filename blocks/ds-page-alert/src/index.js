@@ -25,7 +25,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( 'cagov-design-system/ds-page-alert', {
+registerBlockType('cagov-design-system/ds-page-alert', {
 	/**
 	 * @see ./edit.js
 	 */
@@ -34,4 +34,4 @@ registerBlockType( 'cagov-design-system/ds-page-alert', {
 	 * @see ./save.js
 	 */
 	save,
-} );
+});

@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "cagov/ds-accordion",
-	"version": "0.1.0",
+	"name": "cagov-design-system/ds-accordion",
+	"version": "2.0.1",
 	"title": "Accordion",
 	"category": "cagov-design-system",
 	"icon": "format-aside",
@@ -10,6 +10,24 @@
 	"supports": {
 		"html": true
 	},
+	"attributes": {
+        "title": {
+          "type": "string",
+          "source": "text",
+		  "selector": "cagov-accordion summary"
+        },
+        "body": {
+          "type": "string",
+          "source": "text",
+		  "selector": "cagov-accordion .accordion-body"
+        }
+      },
+      "example": {
+        "attributes": {
+          "title": "Accordion Title",
+          "body": "Accordion Body"
+        }
+      },
 	"textdomain": "cagov-design-system",
 	"editorScript": "cagov-design-system-gutenberg",
 	"editorStyle": "cagov-design-system-gutenberg",
