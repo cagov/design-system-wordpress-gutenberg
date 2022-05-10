@@ -44,7 +44,6 @@ export default function save(props) {
 		}
 	}
 
-	console.log(linkText)
 	return (
 		<li {...blockProps}>
 			<a href={linkAnchor} target={linkTarget} rel={ '_self' === linkTarget ? 'noopener' : ''}><span>{linkText}</span></a>

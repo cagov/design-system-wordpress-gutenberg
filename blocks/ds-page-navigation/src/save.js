@@ -34,7 +34,7 @@ export default function save(props) {
 	return (
 		<div {...blockProps}>
 			<sidebar>
-			<cagov-page-navigation data-selector=".main" data-type="wordpress" data-label={title}>
+			<cagov-page-navigation>
 				<nav aria-labelledby="page-navigation-label">
 					<div class="label">{title}</div>
 					<ul>

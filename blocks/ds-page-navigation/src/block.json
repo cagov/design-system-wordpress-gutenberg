@@ -14,7 +14,7 @@
 		"title":{
 			"type": "string",
 			"source": "text",
-			"selector": "span"
+			"selector": "div"
 		}
 	},
 	"textdomain": "cagov-design-system",

@@ -46,7 +46,7 @@ export default function Edit(props) {
 	return (
 		<div {...blockProps}>
 			<sidebar>
-			<cagov-page-navigation data-selector=".main" data-type="wordpress" data-label={title}>
+			<cagov-page-navigation>
 				<nav aria-labelledby="page-navigation-label">
 					<RichText
 						tagName="div"
